@@ -166,7 +166,7 @@ class _SignupPageScreenState extends State<SignupPageScreen> {
                                     errorText: 'please enter an Email'),
                                 EmailValidator(
                                     errorText:
-                                        'Please provide a workimg email'),
+                                        'Please provide a working email'),
                               ]),
                             ),
                             SignUpTextField(

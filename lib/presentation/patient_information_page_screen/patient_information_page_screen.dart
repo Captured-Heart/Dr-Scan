@@ -140,7 +140,7 @@ class _PatientInformationPageScreenState
                                           errorText: 'please enter an Email'),
                                       EmailValidator(
                                           errorText:
-                                              'Please provide a workimg email'),
+                                              'Please provide a working email'),
                                     ]),
                                     obscureText: false,
                                   ),

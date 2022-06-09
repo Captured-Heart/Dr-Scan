@@ -156,7 +156,7 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                                                                     'please enter an Email'),
                                                             EmailValidator(
                                                                 errorText:
-                                                                    'Please provide a workimg email'),
+                                                                    'Please provide a working email'),
                                                           ]),
                                                           decoration: InputDecoration(
                                                               hintText:

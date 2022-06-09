@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+
 import 'controller/report_page_controller.dart';
 import 'package:drscanner/core/app_export.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +10,7 @@ class ReportPageScreen extends GetWidget<ReportPageController> {
   final String? name, age, eye, diagnosis;
 
   ReportPageScreen({this.name, this.age, this.eye, this.diagnosis});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -116,17 +119,42 @@ class ReportPageScreen extends GetWidget<ReportPageController> {
                                                                               fit: BoxFit.fill)))))
                                                     ]))),
                                         Padding(
-                                          padding: EdgeInsets.only(
-                                              left: getHorizontalSize(43.00),
-                                              top: getVerticalSize(91.00),
-                                              right: getHorizontalSize(43.00)),
-                                          child: one[4] == null
-                                              ? CircularProgressIndicator(color: Colors.blue,)
-                                              : Image.network(one[4],
-                                                  height: getSize(159.00),
-                                                  width: getSize(159.00),
-                                                  fit: BoxFit.fill),
-                                        )
+                                            padding: EdgeInsets.only(
+                                                left: getHorizontalSize(43.00),
+                                                top: getVerticalSize(91.00),
+                                                right:
+                                                    getHorizontalSize(43.00)),
+                                            child: CachedNetworkImage(
+                                              imageUrl: one[4],
+                                              height: getSize(159.00),
+                                              width: getSize(159.00),
+                                              fit: BoxFit.fill,
+                                              progressIndicatorBuilder:
+                                                  (context, name, progress) {
+                                                return Center(
+                                                  child:
+                                                      CircularProgressIndicator(),
+                                                );
+                                                
+                                              },
+                                              errorWidget: (context, name, go){
+                                                return Text('no image avaiable/ Check your Network and try again');
+                                              },
+                                            )
+
+                                            //  Image.network(one[4],
+                                            //         height: getSize(159.00),
+                                            //         width: getSize(159.00),
+                                            //         cacheHeight:  159,
+                                            //         cacheWidth: 100,
+                                            //         loadingBuilder: (context,
+                                            //             child, loadingProgress) {
+                                            //               if(loadingProgress == null) Text('no image to display');
+                                            //         return Center(
+                                            //             child:
+                                            //                 CircularProgressIndicator());
+                                            //       }, fit: BoxFit.fill,),
+                                            )
                                       ])),
                               Align(
                                   alignment: Alignment.center,
@@ -163,19 +191,18 @@ class ReportPageScreen extends GetWidget<ReportPageController> {
                                                                       right: getHorizontalSize(
                                                                           6.00)),
                                                                   child: Text(
-                                                                      
-                                                                          one[3],
+                                                                      one[3],
                                                                       overflow:
                                                                           TextOverflow
                                                                               .ellipsis,
                                                                       textAlign:
                                                                           TextAlign
                                                                               .right,
-                                                                      style: AppStyle
-                                                                          .textstylemontserratregular141
-                                                                          .copyWith(
-                                                                              fontSize: getFontSize(14),
-                                                                              height: 1.57)))),
+                                                                      style: AppStyle.textstylemontserratregular141.copyWith(
+                                                                          fontSize: getFontSize(
+                                                                              14),
+                                                                          height:
+                                                                              1.57)))),
                                                           Align(
                                                               alignment:
                                                                   Alignment
@@ -302,7 +329,7 @@ class ReportPageScreen extends GetWidget<ReportPageController> {
                                                         ])))
                                           ]))),
 
-                                          //! BOTTOM NAV BAR
+                              //! BOTTOM NAV BAR
                               Container(
                                   margin: EdgeInsets.only(
                                       top: getVerticalSize(76.00)),
