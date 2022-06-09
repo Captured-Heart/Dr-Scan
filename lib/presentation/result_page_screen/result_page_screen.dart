@@ -373,7 +373,7 @@ class _ResultPageScreenState extends State<ResultPageScreen> {
                                                           }));
                                                   Map<String, String>
                                                       patientsMap = {
-                                                    '${one[2]}eye': one[2],
+                                                    'eye': one[2],
                                                     'diagnosis':
                                                         '${one[2] + ':' + ' Stages of Glaucoma'}',
                                                     'imgUrl': imgUrl.toString()

@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ReportPageScreen extends GetWidget<ReportPageController> {
+  final one = Get.arguments;
+  final String? name, age, eye, diagnosis;
+
+  ReportPageScreen({this.name, this.age, this.eye, this.diagnosis});
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -112,26 +116,27 @@ class ReportPageScreen extends GetWidget<ReportPageController> {
                                                                               fit: BoxFit.fill)))))
                                                     ]))),
                                         Padding(
-                                            padding: EdgeInsets.only(
-                                                left: getHorizontalSize(43.00),
-                                                top: getVerticalSize(91.00),
-                                                right:
-                                                    getHorizontalSize(43.00)),
-                                            child: Image.asset(
-                                                ImageConstant.imgEyeimage,
-                                                height: getSize(159.00),
-                                                width: getSize(159.00),
-                                                fit: BoxFit.fill))
+                                          padding: EdgeInsets.only(
+                                              left: getHorizontalSize(43.00),
+                                              top: getVerticalSize(91.00),
+                                              right: getHorizontalSize(43.00)),
+                                          child: one[4] == null
+                                              ? CircularProgressIndicator(color: Colors.blue,)
+                                              : Image.network(one[4],
+                                                  height: getSize(159.00),
+                                                  width: getSize(159.00),
+                                                  fit: BoxFit.fill),
+                                        )
                                       ])),
                               Align(
                                   alignment: Alignment.center,
                                   child: Container(
                                       height: getVerticalSize(115.00),
-                                      width: getHorizontalSize(198.00),
+                                      width: MediaQuery.of(context).size.width,
                                       margin: EdgeInsets.only(
-                                          left: getHorizontalSize(81.00),
+                                          left: getHorizontalSize(70.00),
                                           top: getVerticalSize(41.00),
-                                          right: getHorizontalSize(81.00)),
+                                          right: getHorizontalSize(12.00)),
                                       child: Stack(
                                           alignment: Alignment.centerRight,
                                           children: [
@@ -141,7 +146,7 @@ class ReportPageScreen extends GetWidget<ReportPageController> {
                                                     height:
                                                         getVerticalSize(115.00),
                                                     width: getHorizontalSize(
-                                                        198.00),
+                                                        298.00),
                                                     child: Stack(
                                                         alignment:
                                                             Alignment.topRight,
@@ -156,16 +161,16 @@ class ReportPageScreen extends GetWidget<ReportPageController> {
                                                                       top: getVerticalSize(
                                                                           10.00),
                                                                       right: getHorizontalSize(
-                                                                          16.00)),
+                                                                          6.00)),
                                                                   child: Text(
-                                                                      "lbl_stages_of_dr"
-                                                                          .tr,
+                                                                      
+                                                                          one[3],
                                                                       overflow:
                                                                           TextOverflow
                                                                               .ellipsis,
                                                                       textAlign:
                                                                           TextAlign
-                                                                              .center,
+                                                                              .right,
                                                                       style: AppStyle
                                                                           .textstylemontserratregular141
                                                                           .copyWith(
@@ -174,16 +179,15 @@ class ReportPageScreen extends GetWidget<ReportPageController> {
                                                           Align(
                                                               alignment:
                                                                   Alignment
-                                                                      .topRight,
+                                                                      .topCenter,
                                                               child: Padding(
                                                                   padding: EdgeInsets.only(
                                                                       left: getHorizontalSize(
-                                                                          10.00),
+                                                                          90.00),
                                                                       bottom: getVerticalSize(
                                                                           10.00)),
                                                                   child: Text(
-                                                                      "lbl_patient_s_name"
-                                                                          .tr,
+                                                                      one[0],
                                                                       overflow:
                                                                           TextOverflow
                                                                               .ellipsis,
@@ -257,9 +261,7 @@ class ReportPageScreen extends GetWidget<ReportPageController> {
                                                             MainAxisAlignment
                                                                 .start,
                                                         children: [
-                                                          Text(
-                                                              "lbl_patient_s_age"
-                                                                  .tr,
+                                                          Text(one[1],
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
@@ -283,8 +285,7 @@ class ReportPageScreen extends GetWidget<ReportPageController> {
                                                                       getHorizontalSize(
                                                                           10.00)),
                                                               child: Text(
-                                                                  "lbl_right_left"
-                                                                      .tr,
+                                                                  one[2],
                                                                   overflow:
                                                                       TextOverflow
                                                                           .ellipsis,
@@ -300,6 +301,8 @@ class ReportPageScreen extends GetWidget<ReportPageController> {
                                                                               1.57)))
                                                         ])))
                                           ]))),
+
+                                          //! BOTTOM NAV BAR
                               Container(
                                   margin: EdgeInsets.only(
                                       top: getVerticalSize(76.00)),

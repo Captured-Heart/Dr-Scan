@@ -125,7 +125,7 @@ class EyeSelectionPageScreen extends GetWidget<EyeSelectionPageController> {
                                           onTap: () {
                                             onTapBtnRighteye();
                                             print(name);
-                                            
+
                                             // print()
                                           },
                                           child: Container(
@@ -156,6 +156,7 @@ class EyeSelectionPageScreen extends GetWidget<EyeSelectionPageController> {
                                       child: GestureDetector(
                                           onTap: () {
                                             onTapBtnLefteye();
+                                            print(name);
                                           },
                                           child: Container(
                                               alignment: Alignment.center,
@@ -332,7 +333,7 @@ class EyeSelectionPageScreen extends GetWidget<EyeSelectionPageController> {
   }
 
   onTapBtnLefteye() {
-    Get.toNamed(AppRoutes.fileLeftSelectionPageScreen, arguments: [name[0]]);
+    Get.toNamed(AppRoutes.fileLeftSelectionPageScreen, arguments: [name]);
   }
 
   onTapGroup83() {
