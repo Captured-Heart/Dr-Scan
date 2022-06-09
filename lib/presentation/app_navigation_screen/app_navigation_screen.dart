@@ -608,11 +608,11 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
   }
 
   onTapAnalyzingPage() {
-    Get.toNamed(AppRoutes.analyzingPageScreen);
+    Get.toNamed(AppRoutes.analyzingRightPageScreen);
   }
 
   onTapFileSelectionPage() {
-    Get.toNamed(AppRoutes.fileSelectionPageScreen);
+    Get.toNamed(AppRoutes.fileRightSelectionPageScreen);
   }
 
   onTapEyeSelectionPage() {

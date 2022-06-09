@@ -32,6 +32,18 @@ class DataBaseService {
     return await userDetails.set(adsMap);
   }
  
+   Future setPatientsData(adsMap, String name) async {
+    // final uuid = await authMethods.getCurrentUID();
+    final DocumentReference userDetails =
+        FirebaseFirestore.instance.collection('patients').doc(name);
+    return await userDetails.set(adsMap);
+  }
+  Future updatePatientsData(adsMap, String name) async {
+    // final uuid = await authMethods.getCurrentUID();
+    final DocumentReference userDetails =
+        FirebaseFirestore.instance.collection('patients').doc(name);
+    return await userDetails.update(adsMap);
+  }
   
 //CREATE DATABASE FOR SCHEDULE
 //   Future updateUserSchedule(scheduleMap) async {

@@ -1,12 +1,13 @@
+import 'package:drscanner/presentation/file_selection_page_screen/file_left_selection_page_screen.dart';
 import 'package:drscanner/presentation/patients_list_page_screen/patients_list_page_screen.dart';
 import 'package:drscanner/presentation/patients_list_page_screen/binding/patients_list_page_binding.dart';
 import 'package:drscanner/presentation/report_page_screen/report_page_screen.dart';
 import 'package:drscanner/presentation/report_page_screen/binding/report_page_binding.dart';
 import 'package:drscanner/presentation/result_page_screen/result_page_screen.dart';
 import 'package:drscanner/presentation/result_page_screen/binding/result_page_binding.dart';
-import 'package:drscanner/presentation/analyzing_page_screen/analyzing_page_screen.dart';
+import 'package:drscanner/presentation/analyzing_page_screen/analyzing_right_page_screen.dart';
 import 'package:drscanner/presentation/analyzing_page_screen/binding/analyzing_page_binding.dart';
-import 'package:drscanner/presentation/file_selection_page_screen/file_selection_page_screen.dart';
+import 'package:drscanner/presentation/file_selection_page_screen/file_right_selection_page_screen.dart';
 import 'package:drscanner/presentation/file_selection_page_screen/binding/file_selection_page_binding.dart';
 import 'package:drscanner/presentation/eye_selection_page_screen/eye_selection_page_screen.dart';
 import 'package:drscanner/presentation/eye_selection_page_screen/binding/eye_selection_page_binding.dart';
@@ -27,9 +28,10 @@ class AppRoutes {
 
   static String resultPageScreen = '/result_page_screen';
 
-  static String analyzingPageScreen = '/analyzing_page_screen';
+  static String analyzingRightPageScreen = '/analyzing_right_page_screen';
 
-  static String fileSelectionPageScreen = '/file_selection_page_screen';
+  static String fileLeftSelectionPageScreen = '/file_left_selection_page_screen';
+  static String fileRightSelectionPageScreen = '/file_right_selection_page_screen';
 
   static String eyeSelectionPageScreen = '/eye_selection_page_screen';
 
@@ -67,15 +69,24 @@ class AppRoutes {
       ],
     ),
     GetPage(
-      name: analyzingPageScreen,
-      page: () => AnalyzingPageScreen(),
+      name: analyzingRightPageScreen,
+      page: () => AnalyzingRightPageScreen(),
       bindings: [
         AnalyzingPageBinding(),
+        
+      ],
+      
+    ),
+    GetPage(
+      name: fileRightSelectionPageScreen,
+      page: () => FileRightSelectionPageScreen(),
+      bindings: [
+        FileSelectionPageBinding(),
       ],
     ),
     GetPage(
-      name: fileSelectionPageScreen,
-      page: () => FileSelectionPageScreen(),
+      name: fileLeftSelectionPageScreen,
+      page: () => FileLeftSelectionPageScreen(),
       bindings: [
         FileSelectionPageBinding(),
       ],

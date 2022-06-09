@@ -62,14 +62,19 @@ class AuthMethods {
       UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email!, password: password);
       User? firebaseUser = result.user;
-      if (firebaseUser!.emailVerified)
-        return Get.toNamed(AppRoutes.patientInformationPageScreen);
+      if (firebaseUser!.emailVerified) {
+        Navigator.pushReplacementNamed(context, AppRoutes.patientInformationPageScreen);
+        // Get.toNamed(AppRoutes.patientInformationPageScreen);
+      }else{
+       _showSnackBar('please verify your email', context);
+
+      }
 
       // return firebaseUser.uid;
 
       return _userFromFirebase(firebaseUser);
     } on FirebaseAuthException catch (e) {
-      return _showSnackBar(e.message.toString(), context);
+       _showSnackBar(e.message.toString(), context);
     }
   }
 

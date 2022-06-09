@@ -15,7 +15,7 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
   bool isLoading = false;
   AuthMethods authMethods = AuthMethods();
   LoginPageController controller = LoginPageController();
-   final GlobalKey<FormState> _formKeyLogin = GlobalKey();
+  final GlobalKey<FormState> _formKeyLogin = GlobalKey();
   Dialogs dialog = Dialogs();
 
   @override
@@ -263,11 +263,11 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                                                   onTap: () async {
                                                     final form = _formKeyLogin
                                                         .currentState;
-                                                    if (form!.validate()) {
-                                                      setState(() {
-                                                        isLoading = true;
-                                                      });
-                                                      try {
+                                                    try {
+                                                      if (form!.validate()) {
+                                                        setState(() {
+                                                          isLoading = true;
+                                                        });
                                                         await authMethods
                                                             .signInWithEmailAndPassword(
                                                           controller
@@ -280,25 +280,27 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                                                               .trim(),
                                                           context,
                                                         );
-                                                        setState(() {
-                                                          isLoading = false;
-                                                        });
-                                                      } on FirebaseAuthException catch (e) {
-                                                        dialog.warningDialog(
-                                                            context: context,
-                                                            contentText: e
-                                                                .message
-                                                                .toString(),
-                                                            titleText: 'ERROR',
-                                                            onPositiveClick:
-                                                                () {}
-                                                            // pageName: AppRoutes.loginPageScreen,
-                                                            );
+
                                                         setState(() {
                                                           isLoading = false;
                                                         });
                                                       }
+                                                    } catch (e) {
+                                                      dialog.warningDialog(
+                                                          context: context,
+                                                          contentText: e
+                                                              .toString()
+                                                              .toString(),
+                                                          titleText: 'ERROR',
+                                                          onPositiveClick: () {}
+                                                          // pageName: AppRoutes.loginPageScreen,
+                                                          );
+                                                      setState(() {
+                                                        isLoading = false;
+                                                      });
                                                     }
+                                                    // Get.toNamed(AppRoutes
+                                                    //     .patientInformationPageScreen);
                                                   },
                                                   child: Container(
                                                     alignment: Alignment.center,

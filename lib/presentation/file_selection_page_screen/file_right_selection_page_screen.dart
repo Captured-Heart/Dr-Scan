@@ -1,9 +1,45 @@
+import 'dart:io';
+
+import 'package:drscanner/core/utils/pick_image.dart';
+import 'package:image_picker/image_picker.dart';
+
 import 'controller/file_selection_page_controller.dart';
 import 'package:drscanner/core/app_export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class FileSelectionPageScreen extends GetWidget<FileSelectionPageController> {
+class FileRightSelectionPageScreen extends StatefulWidget {
+  final nameController = Get.arguments;
+
+  @override
+  State<FileRightSelectionPageScreen> createState() =>
+      _FileRightSelectionPageScreenState();
+}
+
+class _FileRightSelectionPageScreenState
+    extends State<FileRightSelectionPageScreen> {
+  FileSelectionPageController controller = FileSelectionPageController();
+  final picker = ImagePicker();
+  File? imgFile;
+  bool imageSource = true;
+
+  //
+  Future<void> pickImages() async {
+    final selected = await picker.pickImage(
+      source: imageSource ? ImageSource.camera : ImageSource.gallery,
+      imageQuality: 90,
+      maxHeight: 400,
+    );
+    setState(() {
+      if (selected != null) {
+        imgFile = File(selected.path);
+        print(imgFile!.lengthSync());
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -113,7 +149,15 @@ class FileSelectionPageScreen extends GetWidget<FileSelectionPageController> {
                                           right: getHorizontalSize(69.00)),
                                       child: GestureDetector(
                                           onTap: () {
-                                            onTapBtnCaptureimage();
+                                            setState(() {
+                                              imageSource = true;
+                                            });
+                                            pickImages().whenComplete(() {
+                                              if (imgFile != null) {
+                                                onTapBtnCaptureimage();
+                                              }
+                                              //!add else to display dialog to tell user that no image was picked
+                                            });
                                           },
                                           child: Container(
                                               alignment: Alignment.center,
@@ -143,7 +187,19 @@ class FileSelectionPageScreen extends GetWidget<FileSelectionPageController> {
                                           right: getHorizontalSize(69.00)),
                                       child: GestureDetector(
                                           onTap: () {
-                                            onTapBtnUploadimage();
+                                            setState(() {
+                                              imageSource = false;
+                                            });
+                                            print(widget.nameController);
+
+                                            pickImages().whenComplete(() {
+                                              if (imgFile != null) {
+                                                onTapBtnCaptureimage();
+                                              }
+                                              //!add else to display dialog to tell user that no image was picked
+                                            });
+
+                                            // onTapBtnUploadimage();
                                           },
                                           child: Container(
                                               alignment: Alignment.center,
@@ -305,11 +361,11 @@ class FileSelectionPageScreen extends GetWidget<FileSelectionPageController> {
   }
 
   onTapBtnCaptureimage() {
-    Get.toNamed(AppRoutes.analyzingPageScreen);
+    Get.toNamed(AppRoutes.analyzingRightPageScreen, arguments: [imgFile, widget.nameController, 'Right']);
   }
 
   onTapBtnUploadimage() {
-    Get.toNamed(AppRoutes.analyzingPageScreen);
+    Get.toNamed(AppRoutes.analyzingRightPageScreen);
   }
 
   onTapGroup72() {

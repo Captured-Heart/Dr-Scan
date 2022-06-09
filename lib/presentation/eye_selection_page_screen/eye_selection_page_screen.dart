@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EyeSelectionPageScreen extends GetWidget<EyeSelectionPageController> {
+  final name = Get.arguments;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -123,6 +124,9 @@ class EyeSelectionPageScreen extends GetWidget<EyeSelectionPageController> {
                                       child: GestureDetector(
                                           onTap: () {
                                             onTapBtnRighteye();
+                                            print(name);
+                                            
+                                            // print()
                                           },
                                           child: Container(
                                               alignment: Alignment.center,
@@ -324,11 +328,11 @@ class EyeSelectionPageScreen extends GetWidget<EyeSelectionPageController> {
   }
 
   onTapBtnRighteye() {
-    Get.toNamed(AppRoutes.fileSelectionPageScreen);
+    Get.toNamed(AppRoutes.fileRightSelectionPageScreen, arguments: [name]);
   }
 
   onTapBtnLefteye() {
-    Get.toNamed(AppRoutes.fileSelectionPageScreen);
+    Get.toNamed(AppRoutes.fileLeftSelectionPageScreen, arguments: [name[0]]);
   }
 
   onTapGroup83() {

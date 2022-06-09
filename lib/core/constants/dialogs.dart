@@ -6,17 +6,16 @@ class Dialogs {
     BuildContext? context,
     String? contentText,
     String? titleText,
+    VoidCallback? onPositiveClick
   }) {
     return dialog.showAnimatedDialog(
       context: context!,
-      barrierDismissible: true,
+      barrierDismissible: false,
       builder: ((context1) {
         return dialog.ClassicGeneralDialogWidget(
           titleText: titleText,
           contentText: contentText,
-          onNegativeClick: () {
-            Navigator.of(context1).pop();
-          },
+          onPositiveClick: onPositiveClick,
         );
       }),
       animationType: dialog.DialogTransitionType.slideFromLeft,

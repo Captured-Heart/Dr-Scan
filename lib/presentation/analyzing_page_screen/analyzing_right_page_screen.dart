@@ -1,9 +1,14 @@
+import 'dart:io';
+
 import 'controller/analyzing_page_controller.dart';
 import 'package:drscanner/core/app_export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class AnalyzingPageScreen extends GetWidget<AnalyzingPageController> {
+class AnalyzingRightPageScreen extends GetWidget<AnalyzingPageController> {
+  final File? imgFile;
+  final one = Get.arguments;
+  AnalyzingRightPageScreen({this.imgFile});
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -31,22 +36,24 @@ class AnalyzingPageScreen extends GetWidget<AnalyzingPageController> {
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         GestureDetector(
-                                            onTap: () {
-                                              onTapImgCircleButton();
-                                            },
-                                            child: Padding(
-                                                padding: EdgeInsets.only(
-                                                    left: getHorizontalSize(
-                                                        38.00),
-                                                    bottom:
-                                                        getVerticalSize(15.00)),
-                                                child: Container(
-                                                    height: getSize(38.00),
-                                                    width: getSize(38.00),
-                                                    child: SvgPicture.asset(
-                                                        ImageConstant
-                                                            .imgCirclebutton2,
-                                                        fit: BoxFit.fill)))),
+                                          onTap: () {
+                                            // onTapImgCircleButton();
+                                            onTapBack();
+                                          },
+                                          child: Padding(
+                                            padding: EdgeInsets.only(
+                                                left: getHorizontalSize(38.00),
+                                                bottom: getVerticalSize(15.00)),
+                                            child: Container(
+                                              height: getSize(38.00),
+                                              width: getSize(38.00),
+                                              child: SvgPicture.asset(
+                                                  ImageConstant
+                                                      .imgCirclebutton2,
+                                                  fit: BoxFit.fill),
+                                            ),
+                                          ),
+                                        ),
                                         Padding(
                                             padding: EdgeInsets.only(
                                                 left: getHorizontalSize(16.50),
@@ -106,8 +113,7 @@ class AnalyzingPageScreen extends GetWidget<AnalyzingPageController> {
                                           left: getHorizontalSize(82.00),
                                           top: getVerticalSize(87.00),
                                           right: getHorizontalSize(82.00)),
-                                      child: Image.asset(
-                                          ImageConstant.imgEyeimage2,
+                                      child: Image.file(one[0],
                                           height: getSize(159.00),
                                           width: getSize(159.00),
                                           fit: BoxFit.fill))),
@@ -121,6 +127,10 @@ class AnalyzingPageScreen extends GetWidget<AnalyzingPageController> {
                                       child: GestureDetector(
                                           onTap: () {
                                             onTapBtnAnalyze();
+                                            print(one[0]);
+                                            print(one[1][0]);
+                                            print(one[2]);
+
                                           },
                                           child: Container(
                                               alignment: Alignment.center,
@@ -278,11 +288,15 @@ class AnalyzingPageScreen extends GetWidget<AnalyzingPageController> {
   }
 
   onTapImgCircleButton() {
-    Get.toNamed(AppRoutes.fileSelectionPageScreen);
+    Get.toNamed(AppRoutes.fileRightSelectionPageScreen);
+  }
+
+  onTapBack() {
+    Get.back(result: [imgFile]);
   }
 
   onTapBtnAnalyze() {
-    Get.toNamed(AppRoutes.resultPageScreen);
+    Get.toNamed(AppRoutes.resultPageScreen, arguments: [one[0], one[1][0], one[2]]);
   }
 
   onTapGroup64() {
