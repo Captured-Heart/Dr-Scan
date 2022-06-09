@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "311037042698",
-    "project_id": "dr-scan-6139c",
-    "storage_bucket": "dr-scan-6139c.appspot.com"
+    "project_number": "921739561717",
+    "project_id": "dr-scan-16de2",
+    "storage_bucket": "dr-scan-16de2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:311037042698:android:9c14467f7b4c984672bff3",
+        "mobilesdk_app_id": "1:921739561717:android:26dc570298830a53bad3bc",
         "android_client_info": {
           "package_name": "com.drscanner.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "311037042698-dt9e0buhjot0v6l5h9e40t0cp4uui583.apps.googleusercontent.com",
+          "client_id": "921739561717-e5ri7rmsijab6vrflmc0v4nq33bp9jt9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD8ZcQyYLEZb-O-MXa2tqfEZ4Jo6gxwhW0"
+          "current_key": "AIzaSyBUzvgztC_x2JgGrAzw6i2f9BMkWrdrjWM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "311037042698-dt9e0buhjot0v6l5h9e40t0cp4uui583.apps.googleusercontent.com",
+              "client_id": "921739561717-e5ri7rmsijab6vrflmc0v4nq33bp9jt9.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

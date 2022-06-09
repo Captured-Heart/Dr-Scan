@@ -375,7 +375,7 @@ class _ResultPageScreenState extends State<ResultPageScreen> {
                                                       patientsMap = {
                                                     'eye': one[2],
                                                     'diagnosis':
-                                                        '${one[2] + ':' + ' Stages of Glaucoma'}',
+                                                         'Glaucoma',
                                                     'imgUrl': imgUrl.toString()
                                                   };
                                                   dataBaseService

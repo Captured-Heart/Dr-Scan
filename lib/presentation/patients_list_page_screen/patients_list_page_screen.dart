@@ -101,7 +101,7 @@ class PatientsListPageScreen extends GetWidget<PatientsListPageController> {
                                                 left: getHorizontalSize(48.00),
                                                 top: getVerticalSize(14.00),
                                                 bottom: getVerticalSize(14.00)),
-                                            child: Text(document['name'],
+                                            child: Text(document['name'] ,
                                                 overflow: TextOverflow.ellipsis,
                                                 textAlign: TextAlign.center,
                                                 style: AppStyle
@@ -115,7 +115,7 @@ class PatientsListPageScreen extends GetWidget<PatientsListPageController> {
                                                 top: getVerticalSize(14.00),
                                                 right: getHorizontalSize(69.00),
                                                 bottom: getVerticalSize(14.00)),
-                                            child: Text(document['diagnosis'],
+                                            child: Text( document['diagnosis'],
                                                 overflow: TextOverflow.ellipsis,
                                                 textAlign: TextAlign.center,
                                                 style: AppStyle
